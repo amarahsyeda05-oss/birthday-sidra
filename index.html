@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Greeting</title>
+    <title>Happiest 22nd Birthday Sidra</title>
     <style>
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f0f8ff;
+            background: radial-gradient(circle at top, #050816, #02010a 60%);
             overflow: hidden;
         }
         h1 {
             color: #ff69b4;
-            font-size: 5em;
+            font-size: 3.5em;
+            text-align: center;
+            padding: 0 10px;
             animation: bounce 1s infinite;
         }
         @keyframes bounce {
@@ -24,37 +26,43 @@
         }
         .confetti {
             position: absolute;
-            width: 5px;
-            height: 5px;
-            background-color: gold;
-            opacity: 0.7;
+            width: 6px;
+            height: 12px;
+            border-radius: 2px;
+            opacity: 0.8;
             animation: fall 3s linear infinite;
         }
         @keyframes fall {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(100vh); }
+            0%   { transform: translateY(-10vh) rotate(0deg); }
+            100% { transform: translateY(110vh) rotate(360deg); }
         }
     </style>
 </head>
 <body>
-    <h1>Happiest 22nd Birthday Sidra!</h1>
+    <h1>Happiest 22nd Birthday<br>Sidra 🎉💖</h1>
+
+    <!-- Put your own birthday song file in the same folder and keep this name -->
     <audio id="audio" src="birthday-song.mp3" preload="auto"></audio>
+
     <script>
         function createConfetti() {
-            for (let i = 0; i < 100; i++) {
+            const colors = ["#ff4b91", "#ffdd57", "#3ca8ab", "#7f5af0", "#ff9a62"];
+            for (let i = 0; i < 120; i++) {
                 const confetti = document.createElement('div');
                 confetti.classList.add('confetti');
                 confetti.style.left = Math.random() * 100 + '%';
-                confetti.style.backgroundColor = ["red", "blue", "green", "yellow", "purple"][Math.floor(Math.random() * 5)];
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = (Math.random() * 2) + 's';
                 document.body.appendChild(confetti);
-                // Remove confetti after a while
-                setTimeout(() => confetti.remove(), 3000);
+                setTimeout(() => confetti.remove(), 3500);
             }
         }
 
         function playSound() {
             const audio = document.getElementById('audio');
-            audio.play();
+            audio.play().catch(() => {
+                // some browsers need a click first
+            });
         }
 
         window.onload = function() {
