@@ -2,73 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happiest 22nd Birthday Sidra</title>
+    <title>Happiest 22nd Birthday Sidra! 🎂</title>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: radial-gradient(circle at top, #050816, #02010a 60%);
-            overflow: hidden;
-        }
-        h1 {
-            color: #ff69b4;
-            font-size: 3.5em;
-            text-align: center;
-            padding: 0 10px;
-            animation: bounce 1s infinite;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-        .confetti {
-            position: absolute;
-            width: 6px;
-            height: 12px;
-            border-radius: 2px;
-            opacity: 0.8;
-            animation: fall 3s linear infinite;
-        }
-        @keyframes fall {
-            0%   { transform: translateY(-10vh) rotate(0deg); }
-            100% { transform: translateY(110vh) rotate(360deg); }
-        }
+        body { font-family: 'Indie Flower', cursive !important; background: #FDE3A7; margin: 0px; padding: 0px; }
+        ::selection { background: transparent; }
+        h4 { font-size: 26px; line-height: 1px; font-family: 'Amatic SC', cursive !important; }
+        .color1{color:#1BBC9B} .color2{color:#C0392B}
+        .card { color: #013243; position: absolute; top: 50%; left: 50%; width: 300px; height: 400px; background: #e0e1dc; transform-style: preserve-3d; transform: translate(-50%,-50%) perspective(2000px); box-shadow: inset 300px 0 50px rgba(0,0,0,.5), 20px 0 60px rgba(0,0,0,.5); transition: 1s; }
+        .card:hover { transform: translate(-50%,-50%) perspective(2000px) rotate(15deg) scale(1.2); box-shadow: inset 20px 0 50px rgba(0,0,0,.5), 0 10px 100px rgba(0,0,0,.5); }
+        .card:before { content:''; position: absolute; top: -5px; left: 0; width: 100%; height: 5px; background: #BAC1BA; transform-origin: bottom; transform: skewX(-45deg); }
+        .card:after { content: ''; position: absolute; top: 0; right: -5px; width: 5px; height: 100%; background: #92A29C; transform-origin: left; transform: skewY(-45deg); }
+        .card .imgBox { width: 100%; height: 100%; position: relative; transform-origin: left; transition: .7s; }
+        .card .bark { position: absolute; background: #e0e1dc; width: 100%; height: 100%; opacity: 0; transition: .7s; }
+        .card .imgBox img { width: 100%; height: 100%; object-fit: cover; }
+        .card:hover .imgBox { transform: rotateY(-135deg); }
+        .card:hover .bark { opacity: 1; transition: .6s; box-shadow: 300px 200px 100px rgba(0, 0, 0, .4) inset; }
+        .card .details { position: absolute; top: 0; left: 0; box-sizing: border-box; padding: 0 0 0 10px; z-index: -1; margin-top: 40px; }
+        .card .details p { font-size: 14px; line-height: 1.2; transform: rotate(-5deg); padding: 0 0 0 15px; }
+        .card .details h4 { text-align: center; }
+        .text-right { text-align: right; }
     </style>
 </head>
 <body>
-    <h1>Happiest 22nd Birthday<br>Sidra 🎉💖</h1>
-
-    <!-- Put your own birthday song file in the same folder and keep this name -->
-    <audio id="audio" src="birthday-song.mp3" preload="auto"></audio>
-
-    <script>
-        function createConfetti() {
-            const colors = ["#ff4b91", "#ffdd57", "#3ca8ab", "#7f5af0", "#ff9a62"];
-            for (let i = 0; i < 120; i++) {
-                const confetti = document.createElement('div');
-                confetti.classList.add('confetti');
-                confetti.style.left = Math.random() * 100 + '%';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.animationDelay = (Math.random() * 2) + 's';
-                document.body.appendChild(confetti);
-                setTimeout(() => confetti.remove(), 3500);
-            }
-        }
-
-        function playSound() {
-            const audio = document.getElementById('audio');
-            audio.play().catch(() => {
-                // some browsers need a click first
-            });
-        }
-
-        window.onload = function() {
-            createConfetti();
-            playSound();
-        };
-    </script>
+    <div class="card">
+        <div class="imgBox">
+            <div class="bark"></div>
+            <img src="https://img.freepik.com/free-vector/birthday-card-template-with-cute-dinosaur_1308-41131.jpg">
+        </div>
+        <div class="details">
+            <h4 class="color1">HAPPY BIRTHDAY</h4>
+            <h4 class="color2 margin">My Absolute Legend!</h4>
+            <p>You've ALWAYS been more than just a best friend to me!</p>
+            <p>Turning 22 might feel aged [mai to abi ande se nikla hu ],</p>
+            <p>but u r NOT a fossil [yet]</p>
+            <p>may ur mitochondria generate enough ATP to power an amazing birthday</p>
+            <p class="text-right">ameeeeeeeeeeeeen !!!</p>
+            <p class="text-right">♥ Amarah</p>
+        </div>
+    </div>
 </body>
 </html>
